@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       slideClass: "techno__item",
       direction: "vertical",
       slidesPerView: 1,
+      allowTouchMove: false,
 
       pagination: {
         el: ".techno__pagination",
