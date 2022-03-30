@@ -81,18 +81,18 @@ function isScrollAfterElement(el) {
 
 function start() {
   document.addEventListener('scroll', function () {
-    if (!isScrollAfterElement(techno) && !active && (swiper.activeIndex + 1 == swiper.slides.length)) {
-      document.addEventListener("wheel", slideDown, {passive: false});
+    if (!isScrollAfterElement(techno) && !active && (swiper.activeIndex + 1 === swiper.slides.length)) {
+      document.addEventListener("mousewheel", slideDown, {passive: false});
       active = true;
       document.documentElement.scrollTop = document.body.scrollTop = techno.offsetTop + techno.clientHeight / 2 - window.innerHeight / 2;
     }
 
-    if (isScrollAfterElement(techno) && !active && (swiper.activeIndex + 1 == 1)) {
-      document.addEventListener("wheel", slideDown, {passive: false});
+    if (isScrollAfterElement(techno) && !active && (swiper.activeIndex + 1 === 1)) {
+      document.addEventListener("mousewheel", slideDown, {passive: false});
       document.documentElement.scrollTop = document.body.scrollTop = techno.offsetTop + techno.clientHeight / 2 - window.innerHeight / 2;
       active = true;
     }
-  })
+  });
 };
 
 function slideDown(evt) {
@@ -104,9 +104,9 @@ function slideDown(evt) {
   if (countScroll >= 3) {
     document.getElementById('techno-pagination').classList.toggle('techno__pagination--' + (swiper.activeIndex + 1));
 
-    if (evt.deltaY == 100) { // deltaY: 100 - mouse wheel down
+    if (evt.deltaY === 100) { // deltaY: 100 - mouse wheel down
       swiper.slideNext();
-    } else if (evt.deltaY == -100) { // deltaY: -100 - mouse wheel up
+    } else if (evt.deltaY === -100) { // deltaY: -100 - mouse wheel up
       swiper.slidePrev();
     }
 
@@ -114,8 +114,8 @@ function slideDown(evt) {
 
     countScroll = 0;
 
-    if ((swiper.activeIndex + 1 == swiper.slides.length) || (swiper.activeIndex + 1 == 1)) {
-      document.removeEventListener("wheel", slideDown);
+    if ((swiper.activeIndex + 1 === swiper.slides.length) || (swiper.activeIndex + 1 === 1)) {
+      document.removeEventListener("mousewheel", slideDown);
       active = false;
     }
   }
