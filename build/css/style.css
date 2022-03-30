@@ -1138,7 +1138,7 @@ img {
   counter-reset: STEPSITEM;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   background-image: url("../images/steps-footer.png");
   background-size: contain;
   background-position: center bottom;
