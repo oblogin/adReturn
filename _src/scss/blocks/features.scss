@@ -1,0 +1,68 @@
+.features {
+  @include container;
+  margin-bottom: 70px;
+
+  &__image {
+    display: block;
+    width: 305px;
+    margin: 0 auto;
+
+    @include max-width(xs) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__list {
+    @include list-reset;
+  }
+
+  &__item {
+    margin: 0 0 32px;
+  }
+
+  &__caption {
+    margin: 0 0 16px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  &__text {
+    margin: 0;
+  }
+}
+
+@include min-width(lg) {
+  .features {
+    margin-bottom: 0;
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__image {
+      width: 540px;
+    }
+
+    &__list {
+      width: 545px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    &__item {
+      width: 256px;
+      margin: 0 0 48px;
+    }
+
+    &__caption {
+
+    }
+
+    &__text {
+
+    }
+  }
+}

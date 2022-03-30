@@ -1,0 +1,47 @@
+/* stylelint-disable selector-max-type, selector-max-universal */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  background-color: #F8F8FA;
+  color: #3E4249;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* stylelint-enable */
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+  border: 0;
+  clip-path: inset(100%);
+}
+

@@ -1,0 +1,46 @@
+.lead {
+  @include container;
+  margin-bottom: 70px;
+
+  padding: 25px 30px 30px;
+  background: #3E4249;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  &__caption {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #F8F8FA;
+    flex: 1 0 auto;
+
+    @include min-width(lg) {
+      margin: 0;
+    }
+  }
+
+
+}
+
+@include min-width(lg) {
+  .lead {
+    margin-bottom: 100px;
+    padding: 22px;
+    justify-content: flex-end;
+    flex-direction: row;
+
+    &__caption {
+      margin: 0;
+    }
+
+    &__button {
+      position: absolute;
+    }
+  }
+}

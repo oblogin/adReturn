@@ -1,0 +1,32 @@
+.offer {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFC368;
+  border-radius: 32px;
+  padding: 32px 8px;
+  margin-bottom: 72px;
+
+  &__subtitle {
+    margin: 0 0 16px;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: rgba(62, 66, 73, 0.7);
+  }
+}
+
+
+
+@include min-width(lg) {
+  .offer {
+    margin-bottom: 70px;
+
+    &__subtitle {
+      margin: 0 0 24px;
+      font-size: 18px;
+      line-height: 21px;
+    }
+  }
+}
