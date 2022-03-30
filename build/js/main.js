@@ -80,17 +80,17 @@ function isScrollAfterElement(el) {
 }
 
 function start() {
-  document.addEventListener('scroll', function () {
+  document.addEventListener('mousewheel', function () {
     if (!isScrollAfterElement(techno) && !active && (swiper.activeIndex + 1 === swiper.slides.length)) {
-      document.addEventListener("mousewheel", slideDown, {passive: false});
+      document.addEventListener("mousewheel", slideDown, { passive: false });
       active = true;
       document.documentElement.scrollTop = document.body.scrollTop = techno.offsetTop + techno.clientHeight / 2 - window.innerHeight / 2;
     }
 
     if (isScrollAfterElement(techno) && !active && (swiper.activeIndex + 1 === 1)) {
-      document.addEventListener("mousewheel", slideDown, {passive: false});
-      document.documentElement.scrollTop = document.body.scrollTop = techno.offsetTop + techno.clientHeight / 2 - window.innerHeight / 2;
+      document.addEventListener("mousewheel", slideDown, { passive: false });
       active = true;
+      document.documentElement.scrollTop = document.body.scrollTop = techno.offsetTop + techno.clientHeight / 2 - window.innerHeight / 2;
     }
   });
 };
@@ -98,6 +98,7 @@ function start() {
 function slideDown(evt) {
   evt.preventDefault();
   evt.stopPropagation();
+  return false;
 
   countScroll++;
 
