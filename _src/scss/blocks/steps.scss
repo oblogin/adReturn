@@ -6,7 +6,7 @@
     counter-reset: STEPSITEM;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     @include max-width(xs) {
       padding-bottom: 150px;
