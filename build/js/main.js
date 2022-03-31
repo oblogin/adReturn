@@ -41,13 +41,18 @@ if (!isDesctop()) {
 
 let swiper;
 let techno;
-let sliderSwitch;
 let countScroll = 0;
 let active = false;
 let isSlideEdge = true;
 
 document.addEventListener("DOMContentLoaded", function () {
   if (isDesctop()) {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function () {
+        smoothScroll.scrollTo(this.getAttribute('href'), 500);
+      });
+    });
+
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function () {
         const currentOffsetTop = document.getElementById(this.getAttribute('href').slice(1)).offsetTop;
@@ -85,10 +90,29 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+
+function checkScrollSlider() {
+  if (window.pageYOffset + window.innerHeight > techno.offsetTop + window.innerHeight && swiper.activeIndex + 1 !== swiper.slides.length && !active) {
+    lastSlide();
+    console.log(123)
+  }
+
+  if (window.pageYOffset + window.innerHeight < techno.offsetTop && swiper.activeIndex + 1 !== 1 && !active) {
+    firstSlide();
+    console.log(456)
+  }
+}
+
+function firstSlide() {
+  document.getElementById('techno-pagination').classList.toggle('techno__pagination--' + (swiper.activeIndex + 1))
+  swiper.slideTo(0);
+  document.getElementById('techno-pagination').classList.toggle('techno__pagination--' + (swiper.activeIndex + 1));
+}
+
 function lastSlide() {
+  document.getElementById('techno-pagination').classList.toggle('techno__pagination--' + (swiper.activeIndex + 1))
   swiper.slideTo(swiper.slides.length - 1);
-  document.getElementById('techno-pagination').classList.toggle('techno__pagination--1');
-  document.getElementById('techno-pagination').classList.toggle('techno__pagination--' + (swiper.slides.length));
+  document.getElementById('techno-pagination').classList.toggle('techno__pagination--' + (swiper.activeIndex + 1));
 }
 
 function isDesctop() {
@@ -96,19 +120,16 @@ function isDesctop() {
 }
 
 function isScrollAfterElement(el) {
-  return (window.pageYOffset + window.innerHeight / 2) > (techno.offsetTop + techno.clientHeight / 2);
+  return (window.pageYOffset + window.innerHeight / 2) > (el.offsetTop + el.clientHeight / 2);
 }
 
 function isScrollBeforeElement(el) {
-  return (window.pageYOffset + window.innerHeight / 2) < (techno.offsetTop + techno.clientHeight / 2);
+  return (window.pageYOffset + window.innerHeight / 2) < (el.offsetTop + el.clientHeight / 2);
 }
-
 
 const throttleScrollPage = throttle(scrollPage, 20);
 
 const throttleSwitchSlide = throttle(switchSlide, 500);
-
-
 
 function switchSlide(evt) {
   if (evt.deltaY > 0) { // deltaY: 100 - mouse wheel down
@@ -127,6 +148,7 @@ function start(evt) {
   evt.stopPropagation();
 
   throttleScrollPage(evt.deltaY / 2);
+  checkScrollSlider();
 
   if (isScrollBeforeElement(techno) && !active && (swiper.activeIndex + 1 === swiper.slides.length)) {
     active = true;
