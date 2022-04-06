@@ -19,15 +19,19 @@ const navbarTogglee = document.getElementById("navbar-toggle");
 const mainBody = document.getElementById('main-body');
 const navbarWrap = document.getElementById('navbar-wrap');
 const navbarBrand = document.getElementById('navbar-brand');
+const uppupClose = document.getElementById('uppup-close');
+const uppup = document.getElementById('uppup');
 
 if (!isDesctop()) {
+
   navbarTogglee.addEventListener('click', function (evt) {
     mainBody.classList.toggle("main-body--navbar");
     navbarWrap.classList.toggle("navbar__wrap--active");
     navbarBrand.classList.toggle("navbar__brand--active");
     navbarTogglee.classList.toggle("navbar__toggle--active");
   });
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+
+  document.querySelectorAll('a.navbar__link[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function () {
       mainBody.classList.toggle("main-body--navbar");
       navbarWrap.classList.toggle("navbar__wrap--active");
@@ -38,6 +42,22 @@ if (!isDesctop()) {
   });
 }
 
+uppupClose.addEventListener('click', function () {
+  toggleUppup();
+});
+
+let linksUppups = document.querySelectorAll('a[href^="#start-work"]');
+for (let i = 0; i < linksUppups.length; i++) {
+  linksUppups[i].addEventListener('click', function (evt) {
+    evt.preventDefault();
+    toggleUppup();
+  })
+}
+
+function toggleUppup()
+{
+  uppup.classList.toggle("uppup--active");
+}
 
 let swiper;
 let techno;
@@ -47,13 +67,13 @@ let isSlideEdge = true;
 
 document.addEventListener("DOMContentLoaded", function () {
   if (isDesctop()) {
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    document.querySelectorAll('a.navbar__link[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function () {
         smoothScroll.scrollTo(this.getAttribute('href'), 500);
       });
     });
 
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    document.querySelectorAll('a.navbar__link[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function () {
         const currentOffsetTop = document.getElementById(this.getAttribute('href').slice(1)).offsetTop;
         if (currentOffsetTop > techno.offsetTop + techno.clientHeight / 2) {
@@ -89,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('wheel', start, {passive: false});
   }
 });
-
 
 function checkScrollSlider() {
   if (window.pageYOffset + window.innerHeight > techno.offsetTop + window.innerHeight && swiper.activeIndex + 1 !== swiper.slides.length && !active) {
@@ -197,7 +216,6 @@ function slideDown(evt) {
 
 
 function scrollPage(offset) {
-  // document.documentElement.scrollTop += offset;
   smoothScroll.scrollTo(document.documentElement.scrollTop + offset, 20)
 }
 
