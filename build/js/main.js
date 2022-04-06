@@ -54,8 +54,7 @@ for (let i = 0; i < linksUppups.length; i++) {
   })
 }
 
-function toggleUppup()
-{
+function toggleUppup() {
   uppup.classList.toggle("uppup--active");
 }
 

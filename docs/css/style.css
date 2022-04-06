@@ -578,6 +578,7 @@ img {
 @media (min-width: 1200px) {
   .navbar__button {
     display: flex;
+    min-width: 115px;
   }
 }
 .navbar__phone {
@@ -585,9 +586,6 @@ img {
 }
 
 @media (min-width: 1200px) {
-  .navbar__button {
-    min-width: 115px;
-  }
   .navbar__contacts {
     margin-right: 25px;
   }
@@ -1384,6 +1382,20 @@ img {
   position: absolute;
   top: 35px;
   left: 30px;
+}
+.uppup__caption {
+  margin: 0;
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #3E4249;
+}
+.uppup__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 16px;
+  color: #3E4249;
 }
 
 .form {
